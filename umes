@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+<heder>
+    <title>LIBRERIA ONLINE UMES</title>
+</heder>
+<body>
+    <table>
+      <tr>
+          <td>
+              <ul><li>nombre</li></ul>
+          </td>
+      </tr>
+       <tr>
+          <td>
+              <ul><li>apellido</li></ul>
+          </td>
+      </tr>
+       <tr>
+          <td>
+              <ul><li>telefono</li></ul>
+          </td>
+      </tr>
+    </table>
+</body>
+<footer><a href="#"></a></footer>
+</html>
