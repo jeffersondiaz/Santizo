@@ -1,0 +1,4 @@
+c:\users\david\documents\visual studio 2010\Projects\libreriaonline\libreriaonline\bin\libreriaonline.dll
+c:\users\david\documents\visual studio 2010\Projects\libreriaonline\libreriaonline\bin\libreriaonline.pdb
+c:\users\david\documents\visual studio 2010\Projects\libreriaonline\libreriaonline\obj\Debug\libreriaonline.dll
+c:\users\david\documents\visual studio 2010\Projects\libreriaonline\libreriaonline\obj\Debug\libreriaonline.pdb
