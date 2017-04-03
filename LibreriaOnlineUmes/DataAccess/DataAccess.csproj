@@ -36,6 +36,8 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="datos\Conexion.cs" />
+    <Compile Include="DynamicData\FieldTemplates\DynamicDataField1.ascx.cs">
+      <DependentUpon>DynamicDataField1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DynamicDataField1.ascx.designer.cs">
+      <DependentUpon>DynamicDataField1.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DynamicDataField1_Edit.ascx.cs">
+      <DependentUpon>DynamicDataField1_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DynamicDataField1_Edit.ascx.designer.cs">
+      <DependentUpon>DynamicDataField1_Edit.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelLibreria.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,6 +70,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelLibreria.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="entidades\" />
+    <Folder Include="libreriaonline\" />
+    <Folder Include="negocio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DynamicData\FieldTemplates\DynamicDataField1.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DynamicData\FieldTemplates\DynamicDataField1_Edit.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

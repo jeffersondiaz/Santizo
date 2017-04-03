@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="libreriaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="libreriaModelStoreContainer">
+    <EntitySet Name="cliente" EntityType="libreriaModel.Store.cliente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="estado" EntityType="libreriaModel.Store.estado" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="nuevolote" EntityType="libreriaModel.Store.nuevolote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="nuevoprod" EntityType="libreriaModel.Store.nuevoprod" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="prodnombre" EntityType="libreriaModel.Store.prodnombre" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="proveedor" EntityType="libreriaModel.Store.proveedor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="registrolibreria" EntityType="libreriaModel.Store.registrolibreria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SuperUsuario" EntityType="libreriaModel.Store.SuperUsuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="libreriaModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuario" EntityType="libreriaModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="detallelotes" EntityType="libreriaModel.Store.detallelotes" store:Type="Views" store:Schema="dbo" store:Name="detallelotes">
+      <DefiningQuery>SELECT 
+      [detallelotes].[idlote] AS [idlote], 
+      [detallelotes].[codprod] AS [codprod], 
+      [detallelotes].[saldo] AS [saldo], 
+      [detallelotes].[preciouti] AS [preciouti], 
+      [detallelotes].[valor] AS [valor], 
+      [detallelotes].[preciocompra] AS [preciocompra]
+      FROM [dbo].[detallelotes] AS [detallelotes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="impresiondetallelotes" EntityType="libreriaModel.Store.impresiondetallelotes" store:Type="Views" store:Schema="dbo" store:Name="impresiondetallelotes">
+      <DefiningQuery>SELECT 
+      [impresiondetallelotes].[idlote] AS [idlote], 
+      [impresiondetallelotes].[codprod] AS [codprod], 
+      [impresiondetallelotes].[saldo] AS [saldo], 
+      [impresiondetallelotes].[preciouti] AS [preciouti], 
+      [impresiondetallelotes].[valor] AS [valor], 
+      [impresiondetallelotes].[preciocompra] AS [preciocompra]
+      FROM [dbo].[impresiondetallelotes] AS [impresiondetallelotes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="impresiondetallelotes1" EntityType="libreriaModel.Store.impresiondetallelotes1" store:Type="Views" store:Schema="dbo" store:Name="impresiondetallelotes1">
+      <DefiningQuery>SELECT 
+      [impresiondetallelotes1].[idlote] AS [idlote], 
+      [impresiondetallelotes1].[codprod] AS [codprod], 
+      [impresiondetallelotes1].[saldo] AS [saldo], 
+      [impresiondetallelotes1].[preciouti] AS [preciouti], 
+      [impresiondetallelotes1].[valor] AS [valor], 
+      [impresiondetallelotes1].[preciocompra] AS [preciocompra]
+      FROM [dbo].[impresiondetallelotes1] AS [impresiondetallelotes1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="listalote" EntityType="libreriaModel.Store.listalote" store:Type="Views" store:Schema="dbo" store:Name="listalote">
+      <DefiningQuery>SELECT 
+      [listalote].[idlote] AS [idlote], 
+      [listalote].[codprod] AS [codprod]
+      FROM [dbo].[listalote] AS [listalote]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="listalotes" EntityType="libreriaModel.Store.listalotes" store:Type="Views" store:Schema="dbo" store:Name="listalotes">
+      <DefiningQuery>SELECT 
+      [listalotes].[idlote] AS [idlote], 
+      [listalotes].[codprod] AS [codprod]
+      FROM [dbo].[listalotes] AS [listalotes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Listaproductos" EntityType="libreriaModel.Store.Listaproductos" store:Type="Views" store:Schema="dbo" store:Name="Listaproductos">
+      <DefiningQuery>SELECT 
+      [Listaproductos].[codprod] AS [codprod], 
+      [Listaproductos].[nombre] AS [nombre]
+      FROM [dbo].[Listaproductos] AS [Listaproductos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="listarparametosdelotes" EntityType="libreriaModel.Store.listarparametosdelotes" store:Type="Views" store:Schema="dbo" store:Name="listarparametosdelotes">
+      <DefiningQuery>SELECT 
+      [listarparametosdelotes].[idlote] AS [idlote], 
+      [listarparametosdelotes].[codprod] AS [codprod]
+      FROM [dbo].[listarparametosdelotes] AS [listarparametosdelotes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="registrolotes" EntityType="libreriaModel.Store.registrolotes" store:Type="Views" store:Schema="dbo" store:Name="registrolotes">
+      <DefiningQuery>SELECT 
+      [registrolotes].[idlote] AS [idlote], 
+      [registrolotes].[codprod] AS [codprod], 
+      [registrolotes].[saldo] AS [saldo], 
+      [registrolotes].[preciouti] AS [preciouti], 
+      [registrolotes].[valor] AS [valor], 
+      [registrolotes].[preciocompra] AS [preciocompra], 
+      [registrolotes].[estado] AS [estado]
+      FROM [dbo].[registrolotes] AS [registrolotes]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_cliente_estado" Association="libreriaModel.Store.FK_cliente_estado">
+      <End Role="estado" EntitySet="estado" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_libreria_1_1" Association="libreriaModel.Store.fk_cliente_libreria_1_1">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="registrolibreria" EntitySet="registrolibreria" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nuevolote_libreria_1_1" Association="libreriaModel.Store.fk_nuevolote_libreria_1_1">
+      <End Role="nuevolote" EntitySet="nuevolote" />
+      <End Role="registrolibreria" EntitySet="registrolibreria" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nuevoprod_libreria_1_1" Association="libreriaModel.Store.fk_nuevoprod_libreria_1_1">
+      <End Role="nuevoprod" EntitySet="nuevoprod" />
+      <End Role="nuevolote" EntitySet="nuevolote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nuevoprod_prodnombre" Association="libreriaModel.Store.FK_nuevoprod_prodnombre">
+      <End Role="prodnombre" EntitySet="prodnombre" />
+      <End Role="nuevoprod" EntitySet="nuevoprod" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_libreria_1_1" Association="libreriaModel.Store.fk_proveedor_libreria_1_1">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="registrolibreria" EntitySet="registrolibreria" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="codcliente" />
+    </Key>
+    <Property Name="codcliente" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idestado" />
+    </Key>
+    <Property Name="idestado" Type="int" Nullable="false" />
+    <Property Name="nombreestado" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="nuevolote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+    <Property Name="saldo" Type="numeric" />
+    <Property Name="preciouti" Type="numeric" Scale="2" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="preciocompra" Type="numeric" Scale="3" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <EntityType Name="nuevoprod">
+    <Key>
+      <PropertyRef Name="codprod" />
+    </Key>
+    <Property Name="codprod" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="nombre" Type="int" />
+  </EntityType>
+  <EntityType Name="prodnombre">
+    <Key>
+      <PropertyRef Name="idnombre" />
+    </Key>
+    <Property Name="idnombre" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+    <Property Name="presentacion" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="idproveedor" />
+    </Key>
+    <Property Name="idproveedor" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="rnombre" Type="int" />
+  </EntityType>
+  <EntityType Name="registrolibreria">
+    <Key>
+      <PropertyRef Name="idregistro" />
+    </Key>
+    <Property Name="idregistro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="fechaop" Type="nvarchar" MaxLength="50" />
+    <Property Name="cliente" Type="nvarchar" MaxLength="20" />
+    <Property Name="proveedor" Type="int" />
+    <Property Name="lote" Type="nvarchar" MaxLength="20" />
+    <Property Name="comprobanteing" Type="int" />
+    <Property Name="saldoant" Type="numeric" />
+    <Property Name="precioant" Type="numeric" Scale="2" />
+    <Property Name="entrada" Type="numeric" />
+    <Property Name="salida" Type="numeric" />
+    <Property Name="saldoactual" Type="numeric" />
+    <Property Name="precioactual" Type="numeric" Scale="2" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="256" />
+    <Property Name="factura" Type="int" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="facturaproveedor" Type="numeric" />
+  </EntityType>
+  <EntityType Name="SuperUsuario">
+    <Key>
+      <PropertyRef Name="idSuperusuario" />
+    </Key>
+    <Property Name="idSuperusuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.detallelotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="detallelotes">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+    <Property Name="saldo" Type="numeric" />
+    <Property Name="preciouti" Type="numeric" Scale="2" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="preciocompra" Type="numeric" Scale="3" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.impresiondetallelotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="impresiondetallelotes">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+    <Property Name="saldo" Type="numeric" />
+    <Property Name="preciouti" Type="numeric" Scale="2" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="preciocompra" Type="numeric" Scale="3" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.impresiondetallelotes1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="impresiondetallelotes1">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+    <Property Name="saldo" Type="numeric" />
+    <Property Name="preciouti" Type="numeric" Scale="2" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="preciocompra" Type="numeric" Scale="3" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.listalote' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="listalote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.listalotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="listalotes">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.Listaproductos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Listaproductos">
+    <Key>
+      <PropertyRef Name="codprod" />
+    </Key>
+    <Property Name="codprod" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="nombre" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.listarparametosdelotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="listarparametosdelotes">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'libreria.dbo.registrolotes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="registrolotes">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+    <Property Name="saldo" Type="numeric" />
+    <Property Name="preciouti" Type="numeric" Scale="2" />
+    <Property Name="valor" Type="numeric" Scale="2" />
+    <Property Name="preciocompra" Type="numeric" Scale="3" />
+    <Property Name="estado" Type="int" />
+  </EntityType>
+  <Association Name="FK_cliente_estado">
+    <End Role="estado" Type="libreriaModel.Store.estado" Multiplicity="0..1" />
+    <End Role="cliente" Type="libreriaModel.Store.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_libreria_1_1">
+    <End Role="cliente" Type="libreriaModel.Store.cliente" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.Store.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="codcliente" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nuevolote_libreria_1_1">
+    <End Role="nuevolote" Type="libreriaModel.Store.nuevolote" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.Store.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nuevolote">
+        <PropertyRef Name="idlote" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="lote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nuevoprod_libreria_1_1">
+    <End Role="nuevoprod" Type="libreriaModel.Store.nuevoprod" Multiplicity="0..1" />
+    <End Role="nuevolote" Type="libreriaModel.Store.nuevolote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nuevoprod">
+        <PropertyRef Name="codprod" />
+      </Principal>
+      <Dependent Role="nuevolote">
+        <PropertyRef Name="codprod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nuevoprod_prodnombre">
+    <End Role="prodnombre" Type="libreriaModel.Store.prodnombre" Multiplicity="0..1" />
+    <End Role="nuevoprod" Type="libreriaModel.Store.nuevoprod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prodnombre">
+        <PropertyRef Name="idnombre" />
+      </Principal>
+      <Dependent Role="nuevoprod">
+        <PropertyRef Name="nombre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_libreria_1_1">
+    <End Role="proveedor" Type="libreriaModel.Store.proveedor" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.Store.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="idproveedor" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="actualizarafi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codafiliado" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="actualizarlote2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+    <Parameter Name="codmed" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaven" Type="nvarchar" Mode="In" />
+    <Parameter Name="saldo" Type="numeric" Mode="In" />
+    <Parameter Name="preciomed" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="crearafiliado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codafiliado" Type="nvarchar" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="crearestado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idestado" Type="int" Mode="In" />
+    <Parameter Name="nombreestado" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="crearnombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idnombre" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="presentacion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="crearnuevomedicamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codmed" Type="nvarchar" Mode="In" />
+    <Parameter Name="nombre" Type="int" Mode="In" />
+  </Function>
+  <Function Name="crearsuperusuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="eliminarnuevolote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="eliminarregistro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idregistro" Type="int" Mode="In" />
+  </Function>
+  <Function Name="entradamedicamento912" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="nvarchar" Mode="In" />
+    <Parameter Name="factura" Type="int" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="entrada" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="entradamedicamentoajuste914" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="nvarchar" Mode="In" />
+    <Parameter Name="afiliado" Type="nvarchar" Mode="In" />
+    <Parameter Name="entrada" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="impresion_libreria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="impresionvistakardex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ingafiliado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codafiliado" Type="nvarchar" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ingresarusuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ingreselote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+    <Parameter Name="codmed" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaven" Type="nvarchar" Mode="In" />
+    <Parameter Name="saldo" Type="numeric" Mode="In" />
+    <Parameter Name="preciomed" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="ingresocliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codcliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ingresolotesuper2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+    <Parameter Name="saldo" Type="numeric" Mode="In" />
+    <Parameter Name="preciouti" Type="numeric" Mode="In" />
+    <Parameter Name="preciocompra" Type="numeric" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ingresolotesuper3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+    <Parameter Name="saldo" Type="numeric" Mode="In" />
+    <Parameter Name="precioprod" Type="numeric" Mode="In" />
+    <Parameter Name="preciocompra" Type="numeric" Mode="In" />
+    <Parameter Name="estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ingresonombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idnombre" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="presentacion" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ingresoprod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+    <Parameter Name="nombre" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insproveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idproveedor" Type="int" Mode="In" />
+    <Parameter Name="nombre" Type="varchar" Mode="In" />
+    <Parameter Name="descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Listarlotepormedicamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="listarlotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ListarMedicamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="medicamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+    <Parameter Name="codprod" Type="nvarchar" Mode="In" />
+    <Parameter Name="saldo" Type="numeric" Mode="In" />
+    <Parameter Name="preciouti" Type="numeric" Mode="In" />
+    <Parameter Name="valor" Type="numeric" Mode="In" />
+    <Parameter Name="preciocompra" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="nombrepresentacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="medicamento" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="nuevavistaimpresion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ReporteFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="salidadelibreria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="date" Mode="In" />
+    <Parameter Name="factura" Type="int" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="salida" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="salidalibreria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="date" Mode="In" />
+    <Parameter Name="factura" Type="int" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="salida" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="salidamedicamento1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="date" Mode="In" />
+    <Parameter Name="factura" Type="int" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="salida" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="salidamedicamento911" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="fechaop" Type="nvarchar" Mode="In" />
+    <Parameter Name="factura" Type="int" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="salida" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="salidamedicamentoajuste915" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+    <Parameter Name="cliente" Type="nvarchar" Mode="In" />
+    <Parameter Name="salida" Type="numeric" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="VerificacioUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="verificarSuperlote" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idlote" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="VerificarSuperusuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="vistakardexmodificaca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lote" Type="nvarchar" Mode="In" />
+  </Function>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'libreria.dbo.cuadrelibreria' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="cuadrelibreria">
+        <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+        <Property Name="TOTAL" Type="numeric" Precision="38" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'libreria.dbo.cuadrelibreria1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="cuadrelibreria1">
+        <Property Name="codprod" Type="nvarchar" MaxLength="20" />
+        <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+        <Property Name="TOTAL" Type="numeric" Precision="38" />
+        <Property Name="QTOTAL" Type="numeric" Precision="38" Scale="2" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'libreria.dbo.v_libreria1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="v_libreria1">
+        <Property Name="fechaop" Type="nvarchar" MaxLength="50" />
+        <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+        <Property Name="lote" Type="nvarchar" MaxLength="20" />
+        <Property Name="afiliado" Type="nvarchar" MaxLength="20" />
+        <Property Name="factura" Type="int" />
+        <Property Name="preciouti" Type="numeric" Scale="2" />
+        <Property Name="entrada" Type="numeric" />
+        <Property Name="salida" Type="numeric" />
+        <Property Name="saldoactual" Type="numeric" />
+        <Property Name="precioactual" Type="numeric" Scale="2" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'libreria.dbo.vistakardex' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="vistakardex">
+        <Property Name="fechaop" Type="nvarchar" MaxLength="50" />
+        <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+        <Property Name="lote" Type="nvarchar" MaxLength="20" />
+        <Property Name="factura" Type="int" />
+        <Property Name="preciouti" Type="numeric" Scale="2" />
+        <Property Name="entrada" Type="numeric" />
+        <Property Name="salida" Type="numeric" />
+        <Property Name="saldoactual" Type="numeric" />
+        <Property Name="precioactual" Type="numeric" Scale="2" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'libreria.dbo.vistareportekardex1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="vistareportekardex1">
+        <Property Name="fechaoperado" Type="char" MaxLength="30" />
+        <Property Name="nombre" Type="nvarchar" MaxLength="256" />
+        <Property Name="lote" Type="nvarchar" MaxLength="20" />
+        <Property Name="afiliado" Type="nvarchar" MaxLength="20" />
+        <Property Name="factura" Type="int" />
+        <Property Name="facturaproveedor" Type="numeric" />
+        <Property Name="comprobanteing" Type="int" />
+        <Property Name="preciouti" Type="numeric" Scale="2" />
+        <Property Name="entrada" Type="numeric" />
+        <Property Name="salida" Type="numeric" />
+        <Property Name="valor" Type="numeric" Scale="2" />
+        <Property Name="saldoactual" Type="numeric" />
+        <Property Name="precioactual" Type="numeric" Scale="2" />
+      </EntityType>-->
+</Schema>

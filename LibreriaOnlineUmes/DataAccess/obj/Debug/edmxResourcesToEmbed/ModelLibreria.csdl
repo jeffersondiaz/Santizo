@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="libreriaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="libreriaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clientes" EntityType="libreriaModel.cliente" />
+    <EntitySet Name="estadoes" EntityType="libreriaModel.estado" />
+    <EntitySet Name="nuevolotes" EntityType="libreriaModel.nuevolote" />
+    <EntitySet Name="nuevoprods" EntityType="libreriaModel.nuevoprod" />
+    <EntitySet Name="prodnombres" EntityType="libreriaModel.prodnombre" />
+    <EntitySet Name="proveedors" EntityType="libreriaModel.proveedor" />
+    <EntitySet Name="registrolibrerias" EntityType="libreriaModel.registrolibreria" />
+    <EntitySet Name="SuperUsuarios" EntityType="libreriaModel.SuperUsuario" />
+    <EntitySet Name="sysdiagrams" EntityType="libreriaModel.sysdiagram" />
+    <EntitySet Name="Usuarios" EntityType="libreriaModel.Usuario" />
+    <EntitySet Name="detallelotes" EntityType="libreriaModel.detallelote" />
+    <EntitySet Name="impresiondetallelotes" EntityType="libreriaModel.impresiondetallelote" />
+    <EntitySet Name="impresiondetallelotes1" EntityType="libreriaModel.impresiondetallelotes1" />
+    <EntitySet Name="listalotes" EntityType="libreriaModel.listalote" />
+    <EntitySet Name="listalotes1" EntityType="libreriaModel.listalote1" />
+    <EntitySet Name="Listaproductos" EntityType="libreriaModel.Listaproducto" />
+    <EntitySet Name="listarparametosdelotes" EntityType="libreriaModel.listarparametosdelote" />
+    <EntitySet Name="registrolotes" EntityType="libreriaModel.registrolote" />
+    <AssociationSet Name="FK_cliente_estado" Association="libreriaModel.FK_cliente_estado">
+      <End Role="estado" EntitySet="estadoes" />
+      <End Role="cliente" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_libreria_1_1" Association="libreriaModel.fk_cliente_libreria_1_1">
+      <End Role="cliente" EntitySet="clientes" />
+      <End Role="registrolibreria" EntitySet="registrolibrerias" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nuevolote_libreria_1_1" Association="libreriaModel.fk_nuevolote_libreria_1_1">
+      <End Role="nuevolote" EntitySet="nuevolotes" />
+      <End Role="registrolibreria" EntitySet="registrolibrerias" />
+    </AssociationSet>
+    <AssociationSet Name="fk_nuevoprod_libreria_1_1" Association="libreriaModel.fk_nuevoprod_libreria_1_1">
+      <End Role="nuevoprod" EntitySet="nuevoprods" />
+      <End Role="nuevolote" EntitySet="nuevolotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_nuevoprod_prodnombre" Association="libreriaModel.FK_nuevoprod_prodnombre">
+      <End Role="prodnombre" EntitySet="prodnombres" />
+      <End Role="nuevoprod" EntitySet="nuevoprods" />
+    </AssociationSet>
+    <AssociationSet Name="fk_proveedor_libreria_1_1" Association="libreriaModel.fk_proveedor_libreria_1_1">
+      <End Role="proveedor" EntitySet="proveedors" />
+      <End Role="registrolibreria" EntitySet="registrolibrerias" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="codcliente" />
+    </Key>
+    <Property Name="codcliente" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="estado1" Relationship="libreriaModel.FK_cliente_estado" FromRole="cliente" ToRole="estado" />
+    <NavigationProperty Name="registrolibrerias" Relationship="libreriaModel.fk_cliente_libreria_1_1" FromRole="cliente" ToRole="registrolibreria" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="idestado" />
+    </Key>
+    <Property Name="idestado" Type="Int32" Nullable="false" />
+    <Property Name="nombreestado" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="clientes" Relationship="libreriaModel.FK_cliente_estado" FromRole="estado" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="nuevolote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="saldo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="preciouti" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="preciocompra" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="estado" Type="Int32" />
+    <NavigationProperty Name="registrolibrerias" Relationship="libreriaModel.fk_nuevolote_libreria_1_1" FromRole="nuevolote" ToRole="registrolibreria" />
+    <NavigationProperty Name="nuevoprod" Relationship="libreriaModel.fk_nuevoprod_libreria_1_1" FromRole="nuevolote" ToRole="nuevoprod" />
+  </EntityType>
+  <EntityType Name="nuevoprod">
+    <Key>
+      <PropertyRef Name="codprod" />
+    </Key>
+    <Property Name="codprod" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="Int32" />
+    <NavigationProperty Name="nuevolotes" Relationship="libreriaModel.fk_nuevoprod_libreria_1_1" FromRole="nuevoprod" ToRole="nuevolote" />
+    <NavigationProperty Name="prodnombre" Relationship="libreriaModel.FK_nuevoprod_prodnombre" FromRole="nuevoprod" ToRole="prodnombre" />
+  </EntityType>
+  <EntityType Name="prodnombre">
+    <Key>
+      <PropertyRef Name="idnombre" />
+    </Key>
+    <Property Name="idnombre" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="presentacion" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="nuevoprods" Relationship="libreriaModel.FK_nuevoprod_prodnombre" FromRole="prodnombre" ToRole="nuevoprod" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="idproveedor" />
+    </Key>
+    <Property Name="idproveedor" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="rnombre" Type="Int32" />
+    <NavigationProperty Name="registrolibrerias" Relationship="libreriaModel.fk_proveedor_libreria_1_1" FromRole="proveedor" ToRole="registrolibreria" />
+  </EntityType>
+  <EntityType Name="registrolibreria">
+    <Key>
+      <PropertyRef Name="idregistro" />
+    </Key>
+    <Property Name="idregistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaop" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="cliente" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="proveedor" Type="Int32" />
+    <Property Name="lote" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="comprobanteing" Type="Int32" />
+    <Property Name="saldoant" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="precioant" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="entrada" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="salida" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="saldoactual" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="precioactual" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="descripcion" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="factura" Type="Int32" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="facturaproveedor" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="cliente1" Relationship="libreriaModel.fk_cliente_libreria_1_1" FromRole="registrolibreria" ToRole="cliente" />
+    <NavigationProperty Name="nuevolote" Relationship="libreriaModel.fk_nuevolote_libreria_1_1" FromRole="registrolibreria" ToRole="nuevolote" />
+    <NavigationProperty Name="proveedor1" Relationship="libreriaModel.fk_proveedor_libreria_1_1" FromRole="registrolibreria" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="SuperUsuario">
+    <Key>
+      <PropertyRef Name="idSuperusuario" />
+    </Key>
+    <Property Name="idSuperusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Usuario1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="detallelote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="saldo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="preciouti" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="preciocompra" Type="Decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="impresiondetallelote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="saldo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="preciouti" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="preciocompra" Type="Decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="impresiondetallelotes1">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="saldo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="preciouti" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="preciocompra" Type="Decimal" Precision="18" Scale="3" />
+  </EntityType>
+  <EntityType Name="listalote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="listalote1">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Listaproducto">
+    <Key>
+      <PropertyRef Name="codprod" />
+    </Key>
+    <Property Name="codprod" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="nombre" Type="Int32" />
+  </EntityType>
+  <EntityType Name="listarparametosdelote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="registrolote">
+    <Key>
+      <PropertyRef Name="idlote" />
+    </Key>
+    <Property Name="idlote" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="codprod" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="saldo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="preciouti" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="preciocompra" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="estado" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_cliente_estado">
+    <End Role="estado" Type="libreriaModel.estado" Multiplicity="0..1" />
+    <End Role="cliente" Type="libreriaModel.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="idestado" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_libreria_1_1">
+    <End Role="cliente" Type="libreriaModel.cliente" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="codcliente" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nuevolote_libreria_1_1">
+    <End Role="nuevolote" Type="libreriaModel.nuevolote" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nuevolote">
+        <PropertyRef Name="idlote" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="lote" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_nuevoprod_libreria_1_1">
+    <End Role="nuevoprod" Type="libreriaModel.nuevoprod" Multiplicity="0..1" />
+    <End Role="nuevolote" Type="libreriaModel.nuevolote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nuevoprod">
+        <PropertyRef Name="codprod" />
+      </Principal>
+      <Dependent Role="nuevolote">
+        <PropertyRef Name="codprod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_nuevoprod_prodnombre">
+    <End Role="prodnombre" Type="libreriaModel.prodnombre" Multiplicity="0..1" />
+    <End Role="nuevoprod" Type="libreriaModel.nuevoprod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prodnombre">
+        <PropertyRef Name="idnombre" />
+      </Principal>
+      <Dependent Role="nuevoprod">
+        <PropertyRef Name="nombre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_proveedor_libreria_1_1">
+    <End Role="proveedor" Type="libreriaModel.proveedor" Multiplicity="0..1" />
+    <End Role="registrolibreria" Type="libreriaModel.registrolibreria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="idproveedor" />
+      </Principal>
+      <Dependent Role="registrolibreria">
+        <PropertyRef Name="proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
